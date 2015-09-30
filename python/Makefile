@@ -12,3 +12,6 @@ reqs: setup
 run: setup
 	source $(VENV)/bin/activate && \
 	PYTHONPATH=. python example/bottle/server.py
+
+clean:
+	-find example -type d -name "__pycache__" -exec rm -rf {} \;

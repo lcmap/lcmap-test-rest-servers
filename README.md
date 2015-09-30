@@ -33,14 +33,9 @@ In the above, ``n`` is simply whatever ID you wish to provide.
 
 ## Usage
 
-### ``make`` Targets
-
-```bash
-$ make python
-```
-
-Then load http://localhost:8080/ in your browser and access the URLs for the
-given service with a browser, HTTP client, or client libraries.
+Once a given service is running, you can load http://localhost:8080/ in your
+browser and access the URLs for the given service with a browser, HTTP client,
+or client libraries.
 
 The following ``curl`` examples show how to do this from the command line:
 
@@ -53,6 +48,20 @@ The following ``curl`` examples show how to do this from the command line:
 * ``curl -X GET http://localhost:8080/payment/order/123``
 * ``curl -X PUT http://localhost:8080/payment/order/123``
 * ``curl -X OPTIONS http://localhost:8080/payment/order/123``
+
+### ``make`` Targets
+
+```bash
+$ make python
+```
+
+```bash
+$ make lfe
+```
+
+```bash
+$ make clojure
+```
 
 ### ``Dockerfile``s
 

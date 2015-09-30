@@ -51,6 +51,9 @@ clean-ebin:
 clean-eunit:
 	-@PATH=$(SCRIPT_PATH) $(LFETOOL) tests clean
 
+clean-deps:
+	-rm -rf $(DEPS)
+
 compile: get-deps clean-ebin
 	@echo "Compiling project code and dependencies ..."
 	@which rebar.cmd >/dev/null 2>&1 && \
@@ -87,7 +90,7 @@ shell-no-deps: compile-no-deps
 	@echo "Starting an Erlang shell ..."
 	@PATH=$(SCRIPT_PATH) ERL_LIBS=$(ERL_LIBS) erl + pc unicode
 
-clean: clean-ebin clean-eunit
+clean: clean-deps clean-ebin clean-eunit
 	@which rebar.cmd >/dev/null 2>&1 && rebar.cmd clean || rebar clean
 
 check-unit-only:

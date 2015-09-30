@@ -1,7 +1,7 @@
 (defmodule yrests-store-3
   (export all))
 
-(include-lib "lfest/include/macros.lfe")
+(include-lib "lfest/include/lfest-routes.lfe")
 
 (defroutes
   ('GET "/orders" "<h1>All Current Orders:</h1>")
@@ -13,3 +13,14 @@
   ('GET "/payment/order/:id" (lambda (id) (++ "<h2>Payment Status</h2>")))
   ('PUT "/payment/order/:id" (lambda (id) (++ "<h2>Paid for Order " id "</h2>")))
   ('OPTIONS "/payment/order/:id" "<h2>That payment can be...</h2>"))
+
+(defun out (arg-data)
+  "This is called by YAWS when the requested URL matches the URL specified in
+  the YAWS config (see ./etc/yaws.conf) with the 'appmods' directive for the
+  virtual host in question.
+
+  In particular, this function is intended to handle all v1 traffic for this
+  REST API."
+  (let ((method-name (lfest:get-http-method arg-data))
+        (path-info (lfest:get-path-info arg-data)))
+    (routes method-name path-info arg-data)))

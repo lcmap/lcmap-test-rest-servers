@@ -1,10 +1,8 @@
 (ns example-rest-api.routes
-  (:require [compojure.core :refer [GET OPTIONS POST PUT context defroutes]]
-            [compojure.route :as route]
-            [example-rest-api.api :as api]
-            [example-rest-api.const :as const]))
+  (:require [compojure.core :refer [GET OPTIONS POST PUT DELETE context defroutes]]
+            [compojure.route :as route]))
 
-(defroutes v1-routes
+(defroutes v1
   (GET "/orders" [] "<h1>All Current Orders:</h1>")
   (POST "/order" [] "<h1>Order placed.</h1>")
   (GET "/order/:id" [id] (str "<h2>Order " id " is not ready.</h2>"))

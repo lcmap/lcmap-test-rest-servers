@@ -44,12 +44,16 @@ given service with a browser, HTTP client, or client libraries.
 
 The following ``curl`` examples show how to do this from the command line:
 
-* ``curl -x GET http://localhost:8080/orders``
+* ``curl -X GET http://localhost:8080/orders``
 * ``curl -X POST http://localhost:8080/order``
-* ``curl -x GET http://localhost:8080/order/123``
+* ``curl -X GET http://localhost:8080/order/123``
 * ``curl -X PUT http://localhost:8080/order/123``
 * ``curl -X DELETE http://localhost:8080/order/123``
 * ``curl -X OPTIONS http://localhost:8080/order/123``
-* ``curl -x GET http://localhost:8080/payment/order/123``
+* ``curl -X GET http://localhost:8080/payment/order/123``
 * ``curl -X PUT http://localhost:8080/payment/order/123``
 * ``curl -X OPTIONS http://localhost:8080/payment/order/123``
+
+### ``Dockerfile``s
+
+TBD

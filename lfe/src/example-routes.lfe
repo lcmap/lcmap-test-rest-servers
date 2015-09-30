@@ -1,4 +1,4 @@
-(defmodule yrests-store-3
+(defmodule example-routes
   (export all))
 
 (include-lib "lfest/include/lfest-routes.lfe")

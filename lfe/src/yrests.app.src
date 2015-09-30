@@ -2,7 +2,7 @@
 {application, 'yrests',
  [
   %% A quick description of the application.
-  {description, "A Starter Project for RESTful Services in YAWS using LFE"},
+  {description, "An Example REST Service in YAWS using LFE/lfest"},
 
   %% The version of the application
   {vsn, "0.1.0"},
@@ -10,7 +10,8 @@
   %% All modules used by the application.
   {modules,
    [
-    'yrests'
+    'example-routes',
+    'yrests-util'
    ]},
 
   %% All of the registered names the application uses. This can be ignored.

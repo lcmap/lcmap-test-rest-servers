@@ -2,10 +2,6 @@ from example.bottle.bttl import Bottle
 
 app = Bottle()
 
-@app.get('/')
-def index():
-    return "Hello, World!"
-
 @app.get('/orders')
 def get_orders():
     return "<h1>All Current Orders:</h1>"

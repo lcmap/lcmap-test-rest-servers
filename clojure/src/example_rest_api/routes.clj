@@ -4,20 +4,13 @@
             [example-rest-api.api :as api]
             [example-rest-api.const :as const]))
 
-
 (defroutes v1-routes
-  (OPTIONS "/" []
-    (api/options [:options] {:version const/api-version}))
-  (GET "/" []
-    (api/no-content)))
-
-(defroutes v2-routes)
-
-(defroutes api-routes
-  (GET "/hello" [] (api/hello-world))
-  (PUT "/echo" {content :json-params} (api/echo content))
-  (GET "/echo" {content :json-params} (api/echo content))
-  (POST "/echo" [:as req] (api/echo req))
-  (context "/v1" [] v1-routes)
-  (context "/v2" [] v2-routes)
-  (route/not-found const/four-oh-four-message))
+  (GET "/orders" [] "<h1>All Current Orders:</h1>")
+  (POST "/order" [] "<h1>Order placed.</h1>")
+  (GET "/order/:id" [id] (str "<h2>Order " id " is not ready.</h2>"))
+  (PUT "/order/:id" [id] (str "<h2>Received update for Order " id "</h2>"))
+  (DELETE "/order/:id" [id] (str "<h2>All done with Order " id "</h2>"))
+  (OPTIONS "/order/:id" [id] (str "<h2>That order is allowed to...</h2>"))
+  (GET "/payment/order/:id" [id] (str "<h2>Payment Status</h2>"))
+  (PUT "/payment/order/:id" [id] (str "<h2>Paid for Order " id "</h2>"))
+  (OPTIONS "/payment/order/:id" [id] "<h2>That payment can be...</h2>"))

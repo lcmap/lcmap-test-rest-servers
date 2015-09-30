@@ -9,6 +9,9 @@ lfe: lfe/deps
 lfe/deps:
 	cd lfe && make compile
 
+clojure:
+	cd clojure && make run
+
 clean:
 	-cd python && make clean
 	-cd lfe && make clean

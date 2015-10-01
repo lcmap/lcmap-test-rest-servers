@@ -2,23 +2,18 @@ ETC_DIR = ./etc
 YAWS_DIR = $(DEPS)/yaws
 YAWS = $(YAWS_DIR)/bin/yaws
 YAWS_CONF = $(ETC_DIR)/yaws.conf
-YAWS_SERVER_ID = yawsreststarter
+YAWS_SERVER_ID = lferestexample
 
 app-deps:
 	@mkdir -p logs
 
 dev: app-deps compile-no-deps
 	@ERL_LIBS=$(shell lfetool info erllibs) \
-	$(YAWS) -i --nodebug --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID) \
-	--runmod inets
+	$(YAWS) -i --nodebug --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 run: app-deps compile
 	@ERL_LIBS=$(shell lfetool info erllibs) \
-	$(YAWS) -D --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID) \
-	--runmod inets
-
-update-conf:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
+	$(YAWS) -D --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
 
 stats:
 	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S --id $(YAWS_SERVER_ID)

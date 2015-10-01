@@ -114,3 +114,12 @@ $ make docker-lfe
 ```bash
 $ make docker-clojure
 ```
+
+Once you have a containerized service running, you should be able to test the
+REST service resources just like you did when they ran natively on your machine:
+
+```bash
+$ curl -X GET http://localhost:8080/orders
+```
+
+etc.

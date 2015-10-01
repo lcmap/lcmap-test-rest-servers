@@ -65,4 +65,52 @@ $ make clojure
 
 ### ``Dockerfile``s
 
-TBD
+#### Setup
+
+To use the ``Dockerfile``s included in this repo to run the example REST
+servers, you will need to build the appropriate images in the
+[LCMAP Dockerfiles](https://github.com/USGS-EROS/lcmap-dockerfiles)
+repository:
+
+```bash
+$ git clone https://github.com/USGS-EROS/lcmap-dockerfiles.git
+$ cd lcmap-dockerfiles
+$ make debian-rest
+```
+
+When that completes, you will have the images you will need. You can view them
+with the following:
+
+```bash
+$ docker images|egrep 'usgs-lcmap/debian*'
+```
+
+At this point, you are ready to build the testing REST Docker images:
+
+```bash
+$ make docker
+```
+
+#### Running Containers
+
+If you are on Mac OS X using ``boot2docker``, you will need to set up
+port-forwarding to access the running REST server:
+
+```bash
+$ boot2docker ssh -L 8080:127.0.0.1:8080
+```
+
+The Docker commands for running the individual containers are wrapped by
+``make`` targets for each:
+
+```bash
+$ make docker-python
+```
+
+```bash
+$ make docker-lfe
+```
+
+```bash
+$ make docker-clojure
+```

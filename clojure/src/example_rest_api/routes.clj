@@ -1,6 +1,7 @@
 (ns example-rest-api.routes
   (:require [compojure.core :refer [GET OPTIONS POST PUT DELETE context defroutes]]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [example-rest-api.management :as management]))
 
 (defroutes v1
   (GET "/orders" [] "<h1>All Current Orders:</h1>")
@@ -11,4 +12,5 @@
   (OPTIONS "/order/:id" [id] (str "<h2>That order is allowed to...</h2>"))
   (GET "/payment/order/:id" [id] (str "<h2>Payment Status</h2>"))
   (PUT "/payment/order/:id" [id] (str "<h2>Paid for Order " id "</h2>"))
-  (OPTIONS "/payment/order/:id" [id] "<h2>That payment can be...</h2>"))
+  (OPTIONS "/payment/order/:id" [id] "<h2>That payment can be...</h2>")
+  (GET "/status" [] (management/get-status)))
